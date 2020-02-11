@@ -1,0 +1,105 @@
+body {
+  font-family: sans-serif;
+  
+  color: #fff;
+}
+
+.form,
+.greeting,
+.toDo {
+  display: none;
+}
+
+.SHOW {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: fadeIn 0.5s linear;
+}
+
+.wrapper {
+  transform: translate(-50%,-50%);
+  transform-origin: 50% 50%;
+  display: block;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+}
+
+.clock span {
+  font-size: 120px;
+  font-weight: bold;
+}
+
+.form,
+.greeting {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+input {
+  width: 250px;
+  font-size: 30px;
+  border: 3px solid #fff;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px 10px 7px 15px;
+  margin-top: 12px;
+  background-color: rgba(0,0,0,0);
+}
+
+.toDo input {
+  width: 350px;
+  border: 0;
+  border-bottom: 3px solid #fff;
+  background-color: rgba(0,0,0,0);
+}
+
+input:focus {
+  color: #fff;
+}
+
+.toDoList li {
+  font-size: 30px;
+  padding: 5px 0 0 0;
+  list-style: none;
+}
+
+.toDoList li span {
+  font-size: 30px;
+  padding: 0 10px 0 0;
+}
+
+.toDoList li button {
+  border: 0;
+  outline: none;
+  background-color: rgba(0,0,0,0);
+  color: #fff;
+  font-size: 25px;
+}
+
+.footer {
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  padding: 30px;
+  font-size: 18px;
+}
