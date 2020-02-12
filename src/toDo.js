@@ -35,6 +35,7 @@ function deleteTask(taskId) {
   target.parentNode.removeChild(target);
   deleteFin(target.id);
   deleteToDo(target.id);
+  saveState();
 }
 
 function findInToDos(taskId) {
@@ -67,6 +68,7 @@ function moveToDos() {
   const task = findInFins(taskId);
   deleteFin(taskId);
   addToDos(task);
+  saveState();
   paintToDo(task);
 }
 
@@ -80,6 +82,7 @@ function moveToFin(event) {
   const task = findInToDos(taskId);
   deleteToDo(taskId);
   addFins(task);
+  saveState();
   paintFin(task);
 }
 
@@ -113,9 +116,23 @@ function paintFin(task) {
   finList.appendChild(generalList);
 }
 
+function saveState() {
+  localStorage.setItem(TODOS, JSON.stringify(toDos));
+  localStorage.setItem(FINS, JSON.stringify(fins));
+}
+
 function loadState() {
   toDos = JSON.parse(localStorage.getItem(TODOS)) || [];
   fins = JSON.parse(localStorage.getItem(FINS)) || [];
+}
+
+function restoreState() {
+  toDos.forEach(function(task) {
+    paintToDo(task);
+  });
+  fins.forEach(function(task) {
+    paintFin(task);
+  });
 }
 
 function handleSubmit(event) {
@@ -124,11 +141,13 @@ function handleSubmit(event) {
   input.value = "";
   paintToDo(task);
   addToDos(task);
+  saveState();
 }
 
 function init() {
   toDoForm.addEventListener("submit", handleSubmit);
   loadState();
+  restoreState();
 }
 
 init();
